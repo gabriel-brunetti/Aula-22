@@ -53,8 +53,8 @@
         <?php endforeach; ?>
     </ul>
     <form action="index.php" method="post">
-        <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
-        <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
+        <input required type="text" name="nome" id="nome" placeholder="Digite seu nome">
+        <input required type="email" name="email" id="email" placeholder="Digite seu e-mail">
         <button type="submit">Salvar</button>
     </form>
 </body>
