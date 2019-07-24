@@ -1,3 +1,16 @@
+<?php
+    // Definindo uma constante para o nome do arquivo
+    define('ARQUIVO','contatos.json');
+
+    // Carregando o conteúdo do arquivo (string em formato json) para uma variável
+    function getContatos(){
+    $json = file_get_contents(ARQUIVO);
+    $contatos = json_decode($json,true);    
+    return  $contatos;
+    }
+
+    $contatos = getContatos();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,9 +20,18 @@
     <title>Document</title>
 </head>
 <body>
-
-    <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
-    <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
-    <button type="submit">Salvar</button>
+    <ul>
+        <?php foreach ($contatos as $c) : ?>
+        <li>
+            <span><?= $c['nome']?></span> :
+            <span><?= $c['email']?></span>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+    <form action="index.php" method="post">
+        <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
+        <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
+        <button type="submit">Salvar</button>
+    </form>
 </body>
 </html>
